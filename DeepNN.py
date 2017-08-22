@@ -2,7 +2,7 @@
 MNIST Digit Recognizer using a deep neural net with 3 hidden layers.
 
 Basic flow of data:
-input -> weight -> hidden layer 1 (activation function) -> weights -> hidden layer 2 (activation function) -> 
+input -> weight -> hidden layer 1 (activation function) -> weights -> hidden layer 2 (activation function) ->
 weights -> output layer
 
 Then we compare the output to the intended output (cross entropy).
@@ -39,8 +39,8 @@ num_classes = 10
 batch_size = 100
 
 
-'''Input data placeholder, image is 28 x 28 pixels wide, but we will flatten it to be a 1 dimensional array of 
-784 (height x width). Then we're explicitly defining what the input should be. If the input is not what we declare 
+'''Input data placeholder, image is 28 x 28 pixels wide, but we will flatten it to be a 1 dimensional array of
+784 (height x width). Then we're explicitly defining what the input should be. If the input is not what we declare
 it then TF will throw an error, explicit is better than implicit.
 '''
 x = tf.placeholder('float', [None, 784])
@@ -87,7 +87,7 @@ def train_neural_network(x):
 
     # using cross entropy with logits as our cost function (since we're using one hot output)
     # essentially comparing our output to the intended output
-    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(prediction, y))
+    cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=prediction, labels=y))
 
     # we want to minimize our cost
     # default learning rate for the optimizer is 0.001, but explicit is better than implicit
